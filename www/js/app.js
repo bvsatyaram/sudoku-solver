@@ -24,14 +24,35 @@ angular.module('sudokuSolver', ['ionic'])
 })
 
 .controller('SolutionCtrl', function($scope) {
-  $scope.cells = [];
-  for(var i = 1; i <= 81; i++) {
-    $scope.cells.push(
-      {value: Math.floor((Math.random()*9)+1), userInput: ((Math.random() > 0.9) ? true : false)}
-    );
+  function init() {
+    $scope.cellIndices = [];
+    for(var i = 0; i < 81; i++) {
+      $scope.cellIndices.push(i);
+    }
+
+    $scope.cells = {};
+    for(var cellIndex in $scope.cellIndices) {
+      $scope.cells[cellIndex] = {value: null, userInput: false};
+    }
+
+    $scope.editingCellIndex = null;
+  };
+
+  $scope.fetchCell = function(cellIndex) {
+    return $scope.cells[cellIndex];
   }
 
-  $scope.cellClass = function(cell) {
+  $scope.cellValToDisplay = function(cellIndex) {
+    var cell = $scope.fetchCell(cellIndex);
+    if (cell.value) {
+      return cell.value;
+    } else {
+      return '&nbsp;'
+    }
+  }
+
+  $scope.cellClass = function(cellIndex) {
+    var cell = $scope.fetchCell(cellIndex)
     var classNames = ['cell']
     if (cell.userInput) {
       classNames.push('user');
@@ -39,4 +60,21 @@ angular.module('sudokuSolver', ['ionic'])
 
     return classNames;
   }
+
+  $scope.isEditModalHidden = function() {
+    return $scope.editingCellIndex == null;
+  }
+
+  $scope.editCell = function(cellIndex) {
+    $scope.editingCellIndex = cellIndex;
+  }
+
+  $scope.updateCell = function(val) {
+    var cell = $scope.fetchCell($scope.editingCellIndex);
+    cell.value = val;
+    cell.userInput = !!val;
+    $scope.editingCellIndex = null;
+  }
+
+  init();
 })

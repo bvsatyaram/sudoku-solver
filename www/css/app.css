@@ -17,6 +17,18 @@
     #sudoku .cell.user {
       background-color: #34495e;
       color: #ecf0f1; }
+    #sudoku .cell:nth-child(3n) {
+      border-right-width: 3px; }
+    #sudoku .cell:nth-child(9n) {
+      border-right-width: 1px; }
+    #sudoku .cell:nth-child(-n+54) {
+      border-bottom-width: 3px; }
+    #sudoku .cell:nth-child(-n+45) {
+      border-bottom-width: 1px; }
+    #sudoku .cell:nth-child(-n+27) {
+      border-bottom-width: 3px; }
+    #sudoku .cell:nth-child(-n+18) {
+      border-bottom-width: 1px; }
   #sudoku #numberSelector {
     position: absolute;
     top: 0;
@@ -28,7 +40,7 @@
       background-color: #bdc3c7;
       margin: 0 auto;
       width: 60vw;
-      margin: 10vw 15vw; }
+      margin: 5vw 15vw; }
       #sudoku #numberSelector .content .number {
         display: inline-block;
         width: 20vw;

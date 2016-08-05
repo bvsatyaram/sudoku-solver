@@ -26,6 +26,30 @@ $light-bg-color: #bdc3c7;
       background-color: $dark-bg-color;
       color: $light-font-color;
     }
+
+    &:nth-child(3n) {
+      border-right-width: 3px;
+    }
+
+    &:nth-child(9n) {
+      border-right-width: 1px;
+    }
+
+    &:nth-child(-n+54) {
+      border-bottom-width: 3px;
+    }
+
+    &:nth-child(-n+45) {
+      border-bottom-width: 1px;
+    }
+
+    &:nth-child(-n+27) {
+      border-bottom-width: 3px;
+    }
+
+    &:nth-child(-n+18) {
+      border-bottom-width: 1px;
+    }
   }
 
   #numberSelector {
@@ -40,7 +64,7 @@ $light-bg-color: #bdc3c7;
       background-color: $light-bg-color;
       margin: 0 auto;
       width: 60vw;
-      margin: 10vw 15vw;
+      margin: 5vw 15vw;
 
       .number {
         display: inline-block;
