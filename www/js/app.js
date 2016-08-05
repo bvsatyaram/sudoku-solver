@@ -92,5 +92,9 @@ angular.module('sudokuSolver', ['ionic'])
     }
   }
 
+  $scope.reset = function() {
+    init();
+  }
+
   init();
 })
