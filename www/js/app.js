@@ -76,5 +76,21 @@ angular.module('sudokuSolver', ['ionic'])
     $scope.editingCellIndex = null;
   }
 
+  $scope.solve = function() {
+    console.log('Solving');
+    var cells = [];
+    for(var i = 0; i < 81; i++) {
+      cells[i] = $scope.cells[i].value;
+    }
+    solution = SudokuSolver.solve(cells);
+    console.log(solution);
+    if (solution.solution) {
+      cells = solution.solution;
+      for (var i = 0; i < 81; i++) {
+        $scope.cells[i].value = cells[i];
+      }
+    }
+  }
+
   init();
 })
